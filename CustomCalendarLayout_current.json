@@ -1,0 +1,131 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/row-formatting.schema.json",
+  "hideSelection": true,
+  "hideListHeader": true,
+  "rowFormatter": {
+    "elmType": "div",
+    "style": {
+      "display": "flex",
+      "align-items": "stretch",
+      "margin-bottom": "20px"
+    },
+    "attributes": {
+      "class": "ms-bgColor-white"
+    },
+    "children": [
+      {
+        "elmType": "img",
+        "attributes": {
+          "src": "=if([$ImageThumbnail] == '', @currentWeb + '/_layouts/15/userphoto.aspx?size=M',[$ImageThumbnail.serverRelativeUrl])",
+          "title": "[$Title]"
+        },
+        "style": {
+          "width": "200px",
+          "height": "120px"
+        }
+      },
+      {
+        "elmType": "div",
+        "style": {
+          "padding-left": "10px"
+        },
+        "children": [
+          {
+            "elmType": "button",
+            "customRowAction": {
+              "action": "defaultClick"
+            },
+            "style": {
+              "cursor": "pointer",
+              "color": "#fff",
+              "background-color": "#1A1918",
+              "border": "none"
+            },
+            "children": [
+              {
+                "elmType": "span",
+                "txtContent": "[$Title]",
+                "style": {
+                  "font-weight": "bold",
+                  "font-size": "20px"
+                }
+              }
+            ]
+          },
+          {
+            "elmType": "div",
+            "txtContent": "[$Description]",
+            "style": {
+              "font-size": "16px",
+              "padding-top": "5px"
+            }
+          },
+          {
+            "elmType": "div",
+            "style": {
+              "display": "flex",
+              "padding-top": "10px"
+            },
+            "children": [
+              {
+                "elmType": "button",
+                "customRowAction": {
+                  "action": "defaultClick"
+                },
+                "style": {
+                  "cursor": "pointer",
+                  "background-color": "#1A1918",
+                  "border": "none"
+                },
+                "children": [
+                  {
+                    "elmType": "img",
+                    "attributes": {
+                      "src": "https://enter-your-sharepoint-site/SiteAssets/Playbutton3.png",
+                      "title": "[$Title]"
+                    },
+                    "style": {
+                      "height": "32px",
+                      "width": "32px",
+                      "padding-right": "15px"
+                    }
+                  }
+                ]
+              },
+              {
+                "elmType": "span",
+                "txtContent": "=toDateString([$Created])",
+                "style": {
+                  "font-size": "16px",
+                  "color": "#fff",
+                  "padding-right": "15px"
+                }
+              },
+              {
+                "elmType": "span",
+                "txtContent": "[$Duration]",
+                "style": {
+                  "font-size": "16px",
+                  "color": "#fff",
+                  "padding-right": "15px"
+                }
+              },
+              {
+                "elmType": "a",
+                "txtContent": "Add to calendar",
+                "attributes": {
+                  "target": "_blank",
+                  "href": "= 'https://outlook.office.com/calendar/0/deeplink/compose?subject=' + [$Title] + '&body=' + [$Description]"
+                },
+                "style": {
+                  "color": "#fff",
+                  "font-size": "16px"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
